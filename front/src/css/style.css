@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e6e6e6;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Imagens decorativas */
+.top-left-curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  z-index: -1;
+}
+
+.bottom-right-curve {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  z-index: -1;
+}
+
+/* Card de login */
+.login-box {
+  background-color: #f2f2f2;
+  width: 350px;
+  max-width: 90vw;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box img.icon {
+  width: 40px;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.login-box .links {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.login-box a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
+}
+
+.login-box .options {
+  font-size: 12px;
+  text-align: left;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 15px;
+}
+
+.login-box button {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px;
+  background-color: #4cd137;
+  border: none;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background-color: #44bd32;
+}
