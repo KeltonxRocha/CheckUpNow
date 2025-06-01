@@ -47,10 +47,11 @@ body {
 }
 
 .login-box img.icon {
-  width: 40px;
+  width: 75px;
   margin-bottom: 20px;
 }
 
+.login-box input[type="text"],
 .login-box input[type="email"],
 .login-box input[type="password"] {
   width: 100%;
