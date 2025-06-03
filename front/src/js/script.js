@@ -49,8 +49,5 @@ document.addEventListener("DOMContentLoaded", () => {
     aviso.style.color = "green";
     aviso.style.display = "block";
 
-    setTimeout(() => {
-  aviso.style.display = "none";
-}, 5000); // 5 segundos
   });
 });
