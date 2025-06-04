@@ -91,10 +91,10 @@ body {
   width: 100%;
   max-width: 280px;
   padding: 10px;
-  background-color: #4cd137;
+  background-color: #4caf50;
   border: none;
   border-radius: 20px;
-  color: rgb(0, 0, 0);
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
