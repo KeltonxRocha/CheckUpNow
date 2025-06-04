@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const successAnimation = document.getElementById("success-animation");
     const uploadIcon = document.querySelector(".upload-icon");
     const fotoInput = document.getElementById("foto");
+    
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('drop', e => e.preventDefault());
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
