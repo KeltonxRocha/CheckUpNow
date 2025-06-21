@@ -1,6 +1,12 @@
 package checkupnow.backend.model;
+import jakarta.persistence.*;
 
+@Entity
 public class Usuario{
+    @Id
+    @GeneratedValue
+    private long id;
+
     private String nome;
     private String email;
     private String senha;
@@ -30,6 +36,5 @@ public class Usuario{
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
     public String getDatanascimento() {return datanascimento;}
-    public void setDatanascimento(String datanascimento) {this.datanascimento = datanascimento;}
-      
+    public void setDatanascimento(String datanascimento) {this.datanascimento = datanascimento;}   
 }
