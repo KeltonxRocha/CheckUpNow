@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - CheckUp Now!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      overflow-x: hidden;
+      position: relative;
+      height: 100vh;
+    }
+
+    .top-left-curve,
+    .bottom-right-curve {
+      position: absolute;
+      width: 200px;
+      z-index: 0;
+    }
+
+    .top-left-curve {
+      top: 0;
+      left: 0;
+    }
+
+    .bottom-right-curve {
+      bottom: 0;
+      right: 0;
+    }
+
+    .content-box {
+      max-width: 1000px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      height: 85vh;
+      overflow-y: auto;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .grid-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+      justify-items: center;
+    }
+
+    .grid-buttons button {
+      padding: 15px;
+      width: 80%;
+      border: 1px solid #888;
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .grid-buttons button:hover {
+      background-color: #e6f7ee;
+    }
+
+    .appointment {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .appointment p {
+      margin-bottom: 5px;
+    }
+
+    .status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 0.9em;
+    }
+
+    .status.em-andamento {
+      background-color: #c4f0c5;
+      color: #2d7a30;
+    }
+
+    .status.realizada {
+      background-color: #baf5c4;
+      color: #186327;
+    }
+
+    .status.cancelada {
+      background-color: #f7c6c6;
+      color: #912b2b;
+    }
+
+    .status .cancel {
+      margin-left: 10px;
+      background: #f88;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-box {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .filter-box input {
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      margin-right: 5px;
+    }
+
+    .month {
+      font-weight: bold;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .profile-image {
+      text-align: center;
+    }
+
+    .profile-image img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 10px auto;
+    }
+
+    .profile-image p {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .profile-form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .form-row input,
+    .form-row select {
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      width: 180px;
+    }
+
+    .form-row.checkbox-row {
+      justify-content: center;
+    }
+
+    .form-row.checkbox-row label {
+      font-size: 14px;
+    }
+
+    .optional {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .profile-form button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      padding: 5px 20px;
+      gap: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      padding: 8px;
+      cursor: pointer;
+      color: #333;
+      border-radius: 10px;
+    }
+
+    .bottom-nav button.active {
+      background-color: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <img src="/front/src/images/image 1.png" alt="Curva superior" class="top-left-curve">
+  <img src="/front/src/images/image 2.png" alt="Curva inferior" class="bottom-right-curve">
+
+  <div class="content-box">
+    <!-- Agenda -->
+    <section id="agenda" class="content-section active">
+      <h1>Agenda de Horários</h1>
+      <p>Escolha abaixo o tipo de consulta desejado para mostrar os horários disponíveis para esta semana.</p>
+      <div class="grid-buttons">
+        <button>Consultas Clínicas Gerais</button>
+        <button>Psicologia e Psiquiatria</button>
+        <button>Especialidades Médicas</button>
+        <button>Genética Médica</button>
+        <button>Consultas Cirúrgicas</button>
+        <button>Geriatria</button>
+        <button>Pediatria</button>
+        <button>Outras especialidades</button>
+      </div>
+    </section>
+
+    <!-- Histórico -->
+    <section id="historico" class="content-section">
+      <h1>Histórico de Agendamentos</h1>
+      <p><strong>Paciente da Silva Sousa</strong></p>
+      <div class="filter-box">
+        <input type="text" placeholder="Filtrar por médico">
+        <i class="fas fa-sort-down"></i>
+      </div>
+
+      <div class="appointment">
+        <p><strong>Consulta Clínica Geral</strong></p>
+        <p>📅 19/06/2025 às 11:00</p>
+        <p>👨‍⚕️ Dr. Amauri Batista (Clínico Geral)</p>
+        <p>📍 Unidade Central – Sala 203</p>
+        <div class="status em-andamento">⏱ Em Andamento <button class="cancel">X</button></div>
+      </div>
+
+      <div class="month">Maio</div>
+
+      <div class="appointment">
+        <p><strong>Consulta Clínica Cirúrgica</strong></p>
+        <p>📅 31/04/2025 às 15:00</p>
+        <p>👨‍⚕️ Dr. Vinícius Leal (Cirurgião)</p>
+        <p>📍 Unidade Central – Sala 089</p>
+        <div class="status realizada">⏱ Realizada</div>
+      </div>
+
+      <div class="appointment">
+        <p><strong>Consulta Psicológica</strong></p>
+        <p>📅 02/04/2025 às 09:00</p>
+        <p>👩‍⚕️ Dra. Fernanda Ribeiro (Psicóloga)</p>
+        <p>📍 Unidade Central – Sala 052</p>
+        <div class="status cancelada">🚫 Cancelada</div>
+      </div>
+    </section>
+
+    <!-- Perfil -->
+    <section id="perfil" class="content-section">
+      <h1>Perfil de Usuário</h1>
+      <div class="profile-image">
+        <img src="/front/src/images/perfil.png" alt="Foto de perfil">
+        <p>Foto de perfil</p>
+      </div>
+      <form class="profile-form">
+        <div class="form-row">
+          <input type="text" placeholder="19/05/1996">
+          <input type="text" placeholder="01234-567">
+        </div>
+        <div class="form-row">
+          <select><option>Masculino</option></select>
+          <input type="text" placeholder="(+85) 4002-8922">
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="121-121-121-21">
+          <input type="text" placeholder="Unimed">
+        </div>
+        <p class="optional">(campo opcional)</p>
+        <div class="form-row checkbox-row">
+          <label><input type="checkbox"> Possui alguma doença crônica?</label>
+          <label><input type="checkbox"> Faz uso de medicamentos contínuos?</label>
+        </div>
+        <button type="submit">Alterar informações</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Navegação -->
+  <nav class="bottom-nav">
+    <button onclick="showSection('agenda', this)" class="active"><i class="fas fa-calendar-alt"></i></button>
+    <button onclick="showSection('historico', this)"><i class="fas fa-clock"></i></button>
+    <button onclick="showSection('perfil', this)"><i class="fas fa-user"></i></button>
+  </nav>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    // Inicializar a aba padrão
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('agenda', document.querySelector('.bottom-nav button'));
+    });
+  </script>
+</body>
+</html>
