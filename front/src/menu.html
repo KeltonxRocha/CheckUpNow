@@ -226,6 +226,83 @@
       font-size: 18px;
       cursor: pointer;
     }
+
+    /* Styles for the Perfil section */
+    #perfil {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centers horizontally */
+      justify-content: center; /* Centers vertically if there's enough space */
+      height: 100%; /* Ensures the section takes full height to allow vertical centering */
+    }
+
+    #perfil .profile-image {
+      margin-bottom: 20px;
+    }
+
+    #perfil .profile-image img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    #perfil .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 80%; /* Adjust width as needed */
+      max-width: 400px; /* Max width for the form */
+    }
+
+    #perfil .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    #perfil .form-row input,
+    #perfil .form-row select {
+      flex: 1; /* Makes inputs and select take equal space */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center; /* Center placeholder text */
+    }
+
+    #perfil .checkbox-row {
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #perfil .checkbox-row label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    #perfil .optional {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: -10px; /* Pull it closer to the fields above */
+      text-align: left; /* Align to the left of the form */
+    }
+
+    #perfil button[type="submit"] {
+      padding: 12px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    #perfil button[type="submit"]:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -284,7 +361,6 @@
     </section>
   </div>
 
-  <!-- Modal -->
   <div id="overlay" class="modal-overlay">
     <div id="modalAgendamento" class="modal">
       <button class="modal-close" onclick="fecharModal()">&times;</button>
@@ -298,6 +374,34 @@
       </div>
       <div id="horariosDisponiveis" class="times"></div>
     </div>
+  </div>
+  <section id="perfil" class="content-section">
+      <h1>Perfil de Usuário</h1>
+      <div class="profile-image">
+        <img src="/front/src/images/perfil.png" alt="Foto de perfil">
+        <p>Foto de perfil</p>
+      </div>
+      <form class="profile-form">
+        <div class="form-row">
+          <input type="text" placeholder="19/05/1996">
+          <input type="text" placeholder="01234-567">
+        </div>
+        <div class="form-row">
+          <select><option>Masculino</option></select>
+          <input type="text" placeholder="(+85) 4002-8922">
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="121-121-121-21">
+          <input type="text" placeholder="Unimed">
+        </div>
+        <p class="optional">(campo opcional)</p>
+        <div class="form-row checkbox-row">
+          <label><input type="checkbox"> Possui alguma doença crônica?</label>
+          <label><input type="checkbox"> Faz uso de medicamentos contínuos?</label>
+        </div>
+        <button type="submit">Alterar informações</button>
+      </form>
+    </section>
   </div>
 
   <nav class="bottom-nav">
