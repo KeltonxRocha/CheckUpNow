@@ -5,6 +5,8 @@ import checkupnow.backend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -27,13 +29,20 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Usuario login) {
+    public ResponseEntity<?> login(@RequestBody Usuario login) {
         Optional<Usuario> usuario = usuarioRepository.findByEmail(login.getEmail());
 
         if (usuario.isPresent() && usuario.get().getSenha().equals(login.getSenha())) {
-            return "Login bem-sucedido!";
+            Usuario u = usuario.get();
+
+            Map<String, Object> resposta = new HashMap<>();
+            resposta.put("id", u.getId());
+            resposta.put("nome", u.getNome());
+            resposta.put("email", u.getEmail());
+
+            return ResponseEntity.ok(resposta);
         }
 
-        return "Usuário ou senha inválidos.";
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha inválidos.");
     }
 }

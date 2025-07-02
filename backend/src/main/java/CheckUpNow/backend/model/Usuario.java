@@ -7,6 +7,7 @@ public class Usuario{
     @GeneratedValue
     private long id;
 
+    //Dados//
     private String nome;
     private String email;
     private String senha;
@@ -14,7 +15,9 @@ public class Usuario{
     private String telefone;
     private String datanascimento;
 
-    //Construtor//
+    //Construtores//
+    public Usuario(){}
+
     public Usuario(String nome, String email, String senha, String sexo, String telefone, String datanascimento){
         this.nome = nome;
         this.email = email;

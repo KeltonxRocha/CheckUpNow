@@ -1,1 +1,20 @@
-/bin/
+# Pasta de compilação do Maven
+target/
+
+# Arquivos de configuração de IDEs (opcional)
+.idea/
+*.iml
+.vscode/
+
+# Arquivos compilados Java
+*.class
+
+# Logs
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivo de configuração do Spring Boot (que pode conter senhas)
+application.properties
