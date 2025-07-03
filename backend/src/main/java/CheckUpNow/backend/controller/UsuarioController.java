@@ -1,5 +1,7 @@
 package checkupnow.backend.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import checkupnow.backend.model.Usuario;
 import checkupnow.backend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://127.0.0.1:3000")
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {

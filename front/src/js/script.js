@@ -1,23 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.addEventListener('dragover', e => e.preventDefault());
-  document.body.addEventListener('drop', e => e.preventDefault());
-});
-
-function mostrarAviso() {
-  const email = document.getElementById('emailInput').value.trim();
-  const aviso = document.getElementById('mensagemAviso');
-
-  if (email === "") {
-    aviso.textContent = "Por favor, insira um e-mail válido.";
-    aviso.style.color = "red";
-    aviso.style.display = "block";
-  } else {
-    aviso.textContent = `Um e-mail foi enviado para ${email} com instruções para redefinir sua senha.`;
-    aviso.style.color = "green";
-    aviso.style.display = "block";
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
   const emailInput = document.getElementById("emailInput");
@@ -25,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const aviso = document.getElementById("mensagemAviso");
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Impede envio real
+    e.preventDefault();
 
     const email = emailInput.value.trim();
     const senha = passwordInput.value.trim();
@@ -45,9 +25,35 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    aviso.textContent = "Login enviado com sucesso.";
-    aviso.style.color = "green";
-    aviso.style.display = "block";
+    // Conectando ao backend
+    fetch("http://localhost:8080/api/usuarios/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, senha })
+    })
+      .then(async response => {
+        const data = await response.text();
 
+        if (response.ok) {
+          aviso.textContent = "Login bem-sucedido!";
+          aviso.style.color = "green";
+          aviso.style.display = "block";
+
+          // Redireciona para o menu
+          window.location.href = "menu.html";
+        } else {
+          aviso.textContent = data;
+          aviso.style.color = "red";
+          aviso.style.display = "block";
+        }
+      })
+      .catch(error => {
+        console.error("Erro ao fazer login:", error);
+        aviso.textContent = "Erro ao conectar ao servidor.";
+        aviso.style.color = "red";
+        aviso.style.display = "block";
+      });
   });
 });

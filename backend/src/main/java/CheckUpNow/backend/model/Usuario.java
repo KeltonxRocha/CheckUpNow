@@ -27,7 +27,8 @@ public class Usuario{
         this.datanascimento = datanascimento; 
     }
 
-    //getters e setters// 
+    //getters e setters//
+    public long getId() {return id;}
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}
     public String getEmail() {return email;}
@@ -39,5 +40,5 @@ public class Usuario{
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
     public String getDatanascimento() {return datanascimento;}
-    public void setDatanascimento(String datanascimento) {this.datanascimento = datanascimento;}   
+    public void setDatanascimento(String datanascimento) {this.datanascimento = datanascimento;}  
 }
