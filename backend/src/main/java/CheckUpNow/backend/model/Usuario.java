@@ -1,4 +1,7 @@
 package checkupnow.backend.model;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,18 +30,27 @@ public class Usuario{
         this.datanascimento = datanascimento; 
     }
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Consulta> consultas = new ArrayList<>();
+
     //getters e setters//
     public long getId() {return id;}
+
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}
+
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
+
     public String getSenha() {return senha;}
     public void setSenha(String senha) {this.senha = senha;}
+
     public String getSexo() {return sexo;}
     public void setSexo(String sexo) {this.sexo = sexo;}
+
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
+
     public String getDatanascimento() {return datanascimento;}
     public void setDatanascimento(String datanascimento) {this.datanascimento = datanascimento;}  
 }
