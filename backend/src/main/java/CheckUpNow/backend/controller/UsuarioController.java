@@ -14,17 +14,17 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://127.0.0.1:3000")
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController {
+public class UsuarioController{
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @PostMapping("/registrar")
-    public String registrar(@RequestBody Usuario novoUsuario) {
+    public String registrar(@RequestBody Usuario novoUsuario){
         Optional<Usuario> existente = usuarioRepository.findByEmail(novoUsuario.getEmail());
 
-        if (existente.isPresent()) {
-            return "Email já cadastrado.";
+        if (existente.isPresent()){
+            return "Email já cadastrado";
         }
 
         usuarioRepository.save(novoUsuario);
@@ -32,10 +32,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Usuario login) {
+    public ResponseEntity<?> login(@RequestBody Usuario login){
         Optional<Usuario> usuario = usuarioRepository.findByEmail(login.getEmail());
 
-        if (usuario.isPresent() && usuario.get().getSenha().equals(login.getSenha())) {
+        if (usuario.isPresent() && usuario.get().getSenha().equals(login.getSenha())){
             Usuario u = usuario.get();
 
             Map<String, Object> resposta = new HashMap<>();

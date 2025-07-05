@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-public class Consulta {
+public class Consulta{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +18,10 @@ public class Consulta {
     private boolean ativo = true;
 
     // Construtores
-    public Consulta() {
+    public Consulta(){
     }
 
-    public Consulta(String tipo, LocalDate dia, LocalTime horario, String medico, String local) {
+    public Consulta(String tipo, LocalDate dia, LocalTime horario, String medico, String local){
         this.tipo = tipo;
         this.dia = dia;
         this.horario = horario;
@@ -59,7 +59,7 @@ public class Consulta {
     public void setUsuario(Usuario usuario) {this.usuario = usuario;}
 
     // Métodos
-    public void cancelar() {
+    public void cancelar(){
         this.ativo = false;
     }
 }

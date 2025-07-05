@@ -34,17 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify({ email, senha })
     })
       .then(async response => {
-        const data = await response.text();
-
         if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("usuarioId", data.id);
           aviso.textContent = "Login bem-sucedido!";
           aviso.style.color = "green";
           aviso.style.display = "block";
-
-          // Redireciona para o menu
           window.location.href = "menu.html";
         } else {
-          aviso.textContent = data;
+          const erro = await response.text();
+          aviso.textContent = erro;
           aviso.style.color = "red";
           aviso.style.display = "block";
         }

@@ -1,0 +1,204 @@
+/* menu.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f4f8;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  width: 95%;
+  max-width: 1100px;
+  height: 90vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.12);
+  padding: 40px 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.canto-superior-esquerdo,
+.canto-inferior-direito {
+  position: absolute;
+  width: 200px;
+  z-index: 0;
+}
+
+.canto-superior-esquerdo {
+  top: 0;
+  left: 0;
+}
+
+.canto-inferior-direito {
+  bottom: 0;
+  right: 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.tab-button.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.especialidades-title {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.especialidades-grid {
+  padding : 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 60px;
+  margin-bottom: 20px;
+}
+
+.especialidade {
+  padding: 30px;
+  background-color: #f9f9f9;
+  border: 2px solid #cce3d1;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.especialidade:hover {
+  background-color: #4caf50;
+}
+
+.etapa {
+  margin-top: 20px;
+}
+
+#dias-disponiveis,
+#horarios-disponiveis,
+#medicos-disponiveis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#dias-disponiveis button,
+#horarios-disponiveis button,
+#medicos-disponiveis button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#dias-disponiveis button:hover,
+#horarios-disponiveis button:hover,
+#medicos-disponiveis button:hover {
+  background-color: #c4f0c5;
+}
+
+.esconder {
+  display: none;
+}
+
+/* Histórico - Cards */
+#lista-consultas {
+  margin-top: 20px;
+}
+
+.card-consulta {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-consulta p {
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status.futura {
+  background-color: #d2f8d2;
+  color: #256029;
+}
+
+.status.passada {
+  background-color: #e0e0e0;
+  color: #666;
+}
+
+.status.cancelada {
+  background-color: #f8d2d2;
+  color: #802020;
+}
+
+.cancelar-btn {
+  margin-left: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.cancelar-btn:hover {
+  background-color: #d32f2f;
+}
