@@ -1,6 +1,9 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     background-color: #f0f4f8;
 }
 html, body {

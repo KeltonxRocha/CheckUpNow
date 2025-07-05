@@ -6,7 +6,10 @@
 
 body {
   background-color: #f0f4f8;
-  font-family: Arial, sans-serif;
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   height: 100vh;
   overflow: hidden;
   display: flex;
