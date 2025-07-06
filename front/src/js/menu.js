@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     consultas.forEach(consulta => {
       const card = document.createElement("div");
       card.classList.add("card-consulta");
+      card.setAttribute("data-dia", consulta.dia);
 
       const status = consulta.ativo
         ? (new Date(consulta.dia) >= new Date() ? "futura" : "passada")
@@ -185,6 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       listaConsultas.appendChild(card);
     });
+    ordenarConsultasPorData();
+
   }
 
   function converterDiaSemanaParaData(diaSemana) {
@@ -198,4 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
     data.setDate(hoje.getDate() + diff);
     return data.toISOString().split("T")[0];
   }
+  
+  function ordenarConsultasPorData() {
+  const cards = Array.from(listaConsultas.querySelectorAll(".card-consulta"));
+  cards.sort((a, b) => {
+    const dataA = new Date(a.getAttribute("data-dia"));
+    const dataB = new Date(b.getAttribute("data-dia"));
+    return dataB - dataA; // mais futuro primeiro
+  });
+
+  listaConsultas.innerHTML = "";
+  cards.forEach(card => listaConsultas.appendChild(card));
+}
+
 });
