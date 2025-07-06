@@ -102,6 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function formatarDataParaBR(isoDate) {
+  const [ano, mes, dia] = isoDate.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
+
   async function marcarConsulta(medico) {
     const usuarioId = localStorage.getItem("usuarioId");
     if (!usuarioId) {
@@ -114,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dia: converterDiaSemanaParaData(diaSelecionado),
       horario: horarioSelecionado,
       medico: medico,
-      local: "Unidade Central – Sala 101",
+      local: "Unidade Central",
       usuario: { id: usuarioId }
     };
 
@@ -160,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <p><strong>${consulta.tipo}</strong></p>
-        <p>📅 ${consulta.dia} às ${consulta.horario}</p>
+        <p>📅 ${formatarDataParaBR(consulta.dia)} às ${consulta.horario}</p>
         <p>👨‍⚕️ ${consulta.medico}</p>
         <p>📍 ${consulta.local}</p>
         <div class="status ${status}">
