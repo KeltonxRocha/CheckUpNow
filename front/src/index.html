@@ -17,29 +17,30 @@
     <img src="images/image 2.png" alt="Curva inferior" class="bottom-right-curve">
 
     <!-- Login -->
-<div class="login-box">
-  <img src="favicons/logo.png" alt="Ícone de Login" class="icon">
-  
-  <form id="loginForm">
-  <input type="email" id="emailInput" placeholder="E-mail">
-  <input type="password" id="passwordInput" placeholder="Senha">
+    <div class="login-box">
+        <img src="favicons/logo.png" alt="Ícone de Login" class="icon">
 
-  <p class="links">
-    Ainda não possui uma conta? <a href="registro.html">Registre-se aqui</a><br>
-    <a href="senha.html">Esqueci minha senha</a>
-  </p>
+        <form id="loginForm">
+            <input type="email" id="emailInput" placeholder="E-mail">
+            <input type="password" id="passwordInput" placeholder="Senha">
 
-  <div class="options">
-    <label><input type="checkbox"> Visualizar senha</label><br>
-    <label><input type="checkbox"> Manter-me conectado</label>
-  </div>
+            <p class="links">
+                Ainda não possui uma conta? <a href="registro.html">Registre-se aqui</a><br>
+                <a href="senha.html">Esqueci minha senha</a>
+            </p>
 
-  <button type="submit">Login</button>
+            <div class="options">
+                <label><input type="checkbox" id="mostrarSenha"> Visualizar senha</label><br>
+                <label><input type="checkbox"> Manter-me conectado</label>
+            </div>
 
-  <!-- AVISO -->
-  <p id="mensagemAviso" class="aviso" style="display: none;"></p>
-</form>
-</div>
+            <button type="submit">Login</button>
+
+            <!-- AVISO -->
+            <p id="mensagemAviso" class="aviso" style="display: none;"></p>
+        </form>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

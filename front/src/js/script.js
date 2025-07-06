@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
   const aviso = document.getElementById("mensagemAviso");
+  const checkboxMostrarSenha = document.getElementById("mostrarSenha");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -54,5 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
         aviso.style.color = "red";
         aviso.style.display = "block";
       });
+  });
+
+  // Mostrar ou ocultar senha
+  checkboxMostrarSenha.addEventListener("change", () => {
+    passwordInput.type = checkboxMostrarSenha.checked ? "text" : "password";
   });
 });
